@@ -1,4 +1,4 @@
-# Ogre 3D expermients
+# Ogre 3D experiment
 
 ## Goals
 
