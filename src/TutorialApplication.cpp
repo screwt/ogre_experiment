@@ -16,6 +16,7 @@ http://www.ogre3d.org/wiki/
 */
 
 #include "TutorialApplication.h"
+#include "DotSceneLoader.h"
 
 //---------------------------------------------------------------------------
 TutorialApplication::TutorialApplication(void)
@@ -29,11 +30,13 @@ TutorialApplication::~TutorialApplication(void)
 //---------------------------------------------------------------------------
 void TutorialApplication::createScene(void)
 {
+  DotSceneLoader loader;
+  loader.parseDotScene("test.scene","General", mSceneMgr);
     // Create your scene here :)
   //mSceneMgr->setAmbientLight(ColourValue(0.3, 0.3, 0.3));
-  Ogre::Entity* ogreEntity = mSceneMgr->createEntity("ogrehead.mesh");
-  Ogre::SceneNode* ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-  ogreNode->attachObject(ogreEntity);
+  //Ogre::Entity* ogreEntity = mSceneMgr->createEntity("ogrehead.mesh");
+  //Ogre::SceneNode* ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+  //ogreNode->attachObject(ogreEntity);
   Ogre::Light* light = mSceneMgr->createLight("MainLight");
   light->setPosition(20, 80, 50);
 }
