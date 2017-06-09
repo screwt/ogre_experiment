@@ -33,12 +33,12 @@ void TutorialApplication::createScene(void)
   DotSceneLoader loader;
   loader.parseDotScene("test.scene","General", mSceneMgr);
     // Create your scene here :)
-  //mSceneMgr->setAmbientLight(ColourValue(0.3, 0.3, 0.3));
+  mSceneMgr->setAmbientLight(Ogre::ColourValue(0.3, 0.3, 0.3)); 
   //Ogre::Entity* ogreEntity = mSceneMgr->createEntity("ogrehead.mesh");
   //Ogre::SceneNode* ogreNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
   //ogreNode->attachObject(ogreEntity);
-  Ogre::Light* light = mSceneMgr->createLight("MainLight");
-  light->setPosition(20, 80, 50);
+  //Ogre::Light* light = mSceneMgr->createLight("MainLight__");
+  //light->setPosition(20, 80, 50);
 }
 //---------------------------------------------------------------------------
 

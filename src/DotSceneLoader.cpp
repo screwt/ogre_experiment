@@ -108,9 +108,9 @@ void DotSceneLoader::processScene(rapidxml::xml_node<>* XMLRoot)
         processOctree(pElement);
  
     // Process light (?)
-    //pElement = XMLRoot->first_node("light");
-    //if(pElement)
-    //    processLight(pElement);
+    pElement = XMLRoot->first_node("light");
+    if(pElement)
+        processLight(pElement);
  
     // Process camera (?)
     pElement = XMLRoot->first_node("camera");
@@ -292,6 +292,8 @@ void DotSceneLoader::processLight(rapidxml::xml_node<>* XMLNode, Ogre::SceneNode
     // Process attributes
     Ogre::String name = getAttrib(XMLNode, "name");
     Ogre::String id = getAttrib(XMLNode, "id");
+
+    Ogre::LogManager::getSingleton().logMessage("[DotSceneLoader] Process light "+name);
  
     // Create the light
     Ogre::Light *pLight = mSceneMgr->createLight(name);
@@ -521,12 +523,12 @@ void DotSceneLoader::processNode(rapidxml::xml_node<>* XMLNode, Ogre::SceneNode 
     }
  
     // Process light (*)
-    //pElement = XMLNode->first_node("light");
-    //while(pElement)
-    //{
-    //    processLight(pElement, pNode);
-    //    pElement = pElement->next_sibling("light");
-    //}
+    pElement = XMLNode->first_node("light");
+    while(pElement)
+    {
+        processLight(pElement, pNode);
+        pElement = pElement->next_sibling("light");
+    }
  
     // Process camera (*)
     pElement = XMLNode->first_node("camera");
