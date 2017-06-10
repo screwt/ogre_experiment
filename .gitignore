@@ -11,4 +11,5 @@ OvhApi.py
 *.*~
 .hg
 /build
+/build2
 /media

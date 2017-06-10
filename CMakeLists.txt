@@ -66,7 +66,9 @@ find_package(OIS REQUIRED)
 if(NOT OIS_FOUND)
 	message(SEND_ERROR "Failed to find OIS.")
 endif()
- 
+
+
+find_package(Boost REQUIRED) 
 # Find Boost
 if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 	if (WIN32 OR APPLE)
@@ -93,9 +95,9 @@ if (NOT OGRE_BUILD_PLATFORM_IPHONE)
 	find_package(Boost QUIET)
  
 	# Set up referencing of Boost
-#	include_directories(${Boost_INCLUDE_DIR})
+	include_directories(${Boost_INCLUDE_DIR})
 #	add_definitions(-DBOOST_ALL_NO_LIB)
-#	set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
+	set(OGRE_LIBRARIES ${OGRE_LIBRARIES} ${Boost_LIBRARIES})
 endif()
 
 
@@ -127,7 +129,7 @@ add_executable(OgreApp WIN32 ${HDRS} ${SRCS})
 set_target_properties(OgreApp PROPERTIES DEBUG_POSTFIX _d)
 
 message("${OGRE_LIBRARIES}")
-
+message("Boost: ${Boost_LIBRARIES}")
 target_link_libraries(OgreApp ${OGRE_LIBRARIES} ${OIS_LIBRARIES} ${OGRE_Overlay_LIBRARIES}) 
  
 file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/dist/bin)
